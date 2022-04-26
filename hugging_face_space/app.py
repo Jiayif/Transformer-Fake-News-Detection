@@ -27,12 +27,11 @@ def main():
 	part1 = read_md('Part1.md')
 	st.markdown(part1)
 
-	st.markdown("we choosed the recent new from CNN which is confirmed to be real, and put its text to our model.")
-	st.image("news.png", caption='resources: https://us.cnn.com/2022/04/23/business/eu-tech-regulation/index.html')
-	st.write(pd.DataFrame({
-		'True Prob': [0.9968668818473816],
-		'Fake Prob': [1-0.9968668818473816]}))
-	st.markdown("The model performance pretty good and you can try yourslef later.")
+	part2 = read_md('Part2.md')
+	st.markdown(part2)
+	st.image("RoBERTa.png", caption="RoBERTa Architecture",width=600)
+	part3 = read_md('Part3.md')
+	st.markdown(part3)
 
 	st.markdown("## Data Review")
 	left_column1, right_column1, _1, _2 = st.columns(4)
@@ -43,8 +42,16 @@ def main():
 	with right_column1:
 		st.image("contextlen.png", caption='text length of each new')
 
-	part2 = read_md('Part2.md')
-	st.markdown(part2)
+	st.markdown("## Result")
+	st.markdown("we choosed the recent new from CNN which is confirmed to be real, and put its text to our model.")
+	st.image("news.png", caption='resources: https://us.cnn.com/2022/04/23/business/eu-tech-regulation/index.html')
+	st.write(pd.DataFrame({
+		'True Prob': [0.9968668818473816],
+		'Fake Prob': [1-0.9968668818473816]}))
+	st.markdown("The model performance pretty good and you can try yourslef later.")
+
+	part4 = read_md('Part4.md')
+	st.markdown(part4)
 
 	news_data = {"Former GOP Rep Throws Support Behind Obamacare After Becoming Unemployed With Pre-Existing Condition":'''Indonesian police have recaptured a U.S. citizen who escaped a week ago from an overcrowded prison on the holiday island of Bali, the jail s second breakout of foreign inmates this year.  Cristian Beasley from California was rearrested on Sunday, Badung Police chief Yudith Satria Hananta said, without providing further details.  Beasley was a suspect in crimes related to narcotics but had not been sentenced when he escaped from Kerobokan prison in Bali last week. The 32-year-old is believed to have cut through bars in the ceiling of his cell before scaling a perimeter wall of the prison in an area being refurbished. The Kerobokan prison, about 10 km (six miles) from the main tourist beaches in the Kuta area, often holds foreigners facing drug-related charges. Representatives of Beasley could not immediately be reached for comment. In June, an Australian, a Bulgarian, an Indian and a Malaysian tunneled to freedom about 12 meters (13 yards) under Kerobokan prison s walls. The Indian and the Bulgarian were caught soon after in neighboring East Timor, but Australian Shaun Edward Davidson and Malaysian Tee Kok King remain at large. Davidson has taunted authorities by saying he was enjoying life in various parts of the world, in purported posts on Facebook.  Kerobokan has housed a number of well-known foreign drug convicts, including Australian Schappelle Corby, whose 12-1/2-year sentence for marijuana smuggling got huge media attention.''',
 				 "Europe agrees to sweeping new regulations for tech platforms":'''European policymakers have reached agreement on a sweeping package of new regulations for tech platforms that could mean big changes in oversight for everything from social media algorithms to digital advertising — and with potential ramifications worldwide. The proposed law, known as the Digital Services Act (DSA), marks the second piece of landmark tech legislation to advance in Europe within a month. It aims to impose new rules on how the tech industry handles misinformation and illegal content on social media, as well as illegal goods and services on online marketplaces. The biggest companies that violate the law could face billions in fines. "Today's agreement -- complementing the political agreement on the Digital Markets Act last month -- sends a strong signal: to all Europeans, to all EU businesses, and to our international counterparts," said European Commission President Ursula von der Leyen. The draft law marks a potential turning point in tech regulation. It gives officials more tools for removing hate speech, going after e-commerce sellers who promote illegal goods, and scrutinizing the recommendation algorithms of tech platforms, among other things. It applies not only to social media sites but also to app stores, gig economy platforms, and even cloud services and internet providers. The broad legislation also envisions additional requirements for what it calls "very large online platforms" with at least 45 million EU users. For these companies, the law would require content moderation risk assessments and independent audits tied to their handling of illegal material, as well as content that may be legal but still threatens public health, human rights or other public interest priorities. Together with the Digital Markets Act — a competition-focused bill intended to make dominant online platforms more open — the DSA highlights how Europe has moved assertively to craft proactive regulations for Big Tech, leapfrogging US lawmakers who have moved comparatively slowly.''',
