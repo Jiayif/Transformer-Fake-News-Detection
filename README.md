@@ -22,6 +22,11 @@ As is shown above, the main feature of fake news is to create a feeling for read
 
 ## Solution
 
+### RoBERTa
+RoBERTa stands for Robustly Optimized BERT Pre-training Approach. The goal of the model was to optimize the training of BERT architecture in order to take lesser time during pre-training. It is based on BERT, which uses static masking i.e. the same part of the sentence is masked in each Epoch. In contrast, RoBERTa uses dynamic masking, wherein for different Epochs different part of the sentences are masked
+
+
+
 The hardest part of this problem is to gain the accurate data. There is no way for us to confirm each row in our datasets. So we combine the data from kaggle and the data we scraped from news website which is confirmed to be fake or real. we tried to choose objective topics as more as possible. Next we choose the pre-trained model "roberta-base" as our baseline. Since our problem is to classify the text, the hugging face actually has everything we need now, we just need to follow the documents to fine-tune our model. The fine-tune step for a pre_trained model as follows:
 
 1. Tokenize each sentence by roberta token
