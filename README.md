@@ -77,7 +77,9 @@ Here is a recent new from CNN which is confirmed to be real, and we enter the te
 
 [Hugging face tutorial](https://huggingface.co/docs/transformers/index)
 
-[RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://yiyibooks.cn/nlp/roberta/index.html)
+[Kaggle Dataset](https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset)
+
+[RoBERTa: A Robustly Optimized BERT Pretraining Approach](https://huggingface.co/docs/transformers/model_doc/roberta)
 
 ## Demonstration links:
 
