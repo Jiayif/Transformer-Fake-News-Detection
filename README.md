@@ -7,7 +7,7 @@ With the widespread use of various social software. Anyone can be a producer, ca
 ## Problem 
 Most of the time, ordinary people do not have the channels and ability to distinguish the right and wrong information. However, when fake news reaches a certain scale of dissemination, it is very likely to cause huge losses to people or cause misunderstandings. For example, during the pandemic, if there is fake news claiming that a drug that is more harmful to people can protect people from the virus, then those who believe the news may suffer losses. Therefore, we want to provide a way to identify the possibility of fake news to prevent people from being misled by fake news.
 
-Here are some examples of fake news:
+Here is one example of fake news:
 
 ```
 title:
@@ -19,23 +19,30 @@ Donald Trump just couldn t wish all Americans a Happy New Year and leave it at t
 
 As is shown above, the main feature of fake news is to create a feeling for reader that counter common sense. So this model can be applied to the major social media to avoid damage from fake news as much as possible.
 
-
 ## Solution
 
+Used a combined dataset from kaggle and dataset that scraped from new websites that is confirmed to be fake or real. Then select the pre-trained model "roberta-base" as the baseline, and fine tuning the model.
+
 ### RoBERTa
-RoBERTa stands for Robustly Optimized BERT Pre-training Approach. The goal of the model was to optimize the training of BERT architecture in order to take lesser time during pre-training. It is based on BERT, which uses static masking i.e. the same part of the sentence is masked in each Epoch. In contrast, RoBERTa uses dynamic masking, wherein for different Epochs different part of the sentences are masked
+RoBERTa stands for **Robustly Optimized BERT Pre-training Approach**. The goal of the model was to optimize the training of BERT architecture in order to take lesser time during pre-training. **BERT**, which it based on uses static masking i.e. the same part of the sentence is masked in each Epoch. In contrast, RoBERTa uses dynamic masking, wherein for different epochs, different part of the sentences are masked.
 
+![](RoBERTa.png)
 
+### Fine Tuning
 
-The hardest part of this problem is to gain the accurate data. There is no way for us to confirm each row in our datasets. So we combine the data from kaggle and the data we scraped from news website which is confirmed to be fake or real. we tried to choose objective topics as more as possible. Next we choose the pre-trained model "roberta-base" as our baseline. Since our problem is to classify the text, the hugging face actually has everything we need now, we just need to follow the documents to fine-tune our model. The fine-tune step for a pre_trained model as follows:
+Fine tuning is when using a pretrained model, train it on a dataset specific to the task. The steps for fine tuning a pre_trained model can be given as follows:
 
-1. Tokenize each sentence by roberta token
-2. Set our training parameters
-3. Start training
-4. Assessment
+1. Tokenize each sentence using RoBERTa 
+2. Set training parameters
+3. Train the model
+4. Assess: Using ROC-AUC for this problem
 
+### Challenge
+
+The biggest challenge in this task is to get the correct label for each piece of news. As we can't verify news ourselves, I managed to choose news that is objective and has been confirmed or falsified.
+     
 ## Result
-we choosed the recent new from CNN which is confirmed to be real, and put its text to our model.
+Here is a recent new from CNN which is confirmed to be real, and we enter the text into our model.
 
 ![](news.png)
 
@@ -48,16 +55,15 @@ we choosed the recent new from CNN which is confirmed to be real, and put its te
 
 ## Critical Analysis
 
-1. For the current model, we only take top 500 words in the text due to training resources. It may caused some problems when the model meet the large text if its context is highly relevant. We may obtain more resources in the futrue for this problem.
+1. The current model can only take first 500 words in the text due to training resources. It might cause problems when a long text is entered into the model which context is highly relevant. 
 
-2. The model can't give correct prediction for those long text of personal emotional expression.
-
-3. if the input text is too short, it often judges it as fake news due to our strategy of truncating top 500 words and padding short text.
+2. When the input text is too short, it often judges it as fake news due to our strategy of truncating first 500 words and padding short text.
 
    ### Further improvement
 
-   1. We may add more data features such as title, author information to improve the model.
-   2. As for some news, they just predict or represent their opinions on certain situations, we may include Neutral result when we classify the data.
+   1. We may add more features such as title, author information to improve the model.      
+   2. The current pre-trained model RoBERTa is still quite slow when trainning on big datasets. Probably we can try other models and compare the runtime and performance of the models.
+
 
 ## Hugging face links:
 
